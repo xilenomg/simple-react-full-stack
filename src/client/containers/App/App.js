@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import api from '../../common/api/api';
 import './app.css';
 
 export default class App extends Component {
   state = { username: null };
 
   componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+    api('/api/getUsernames')
+      .then(response => this.setState({ username: response.data.username }))
+      .catch(() => {});
   }
 
   render() {

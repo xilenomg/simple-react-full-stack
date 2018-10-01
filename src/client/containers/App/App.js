@@ -6,7 +6,7 @@ export default class App extends Component {
   state = { username: null };
 
   componentDidMount() {
-    api('/api/getUsernames')
+    api('/api/getUsername')
       .then(response => this.setState({ username: response.data.username }))
       .catch(() => {});
   }
